@@ -16,6 +16,10 @@ export class NotionModule {
 
     this.options.filterValues = Array.isArray(this.options.filterValues) ? this.options.filterValues : this.options.filterValues.split(',').map(value => value.trim());
 
+    if (this.options.filterValues[0] === '') {
+      this.options.filterValues = [];
+    }
+
     const databaseId = getDatabaseId(database);
 
     this.database_id = databaseId;
