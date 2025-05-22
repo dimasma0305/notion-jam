@@ -72,14 +72,17 @@ class NotionModule {
   constructor({ secret, database }, options) {
 
     this.options = defaults({
-      filterProp: 'Status',
-      filterValues: 'Ready,Published',
+      filterProp: '',
+      filterValues: '',
       caseType: 'snake',
     }, options);
 
     this.options.filterValues = Array.isArray(this.options.filterValues) ? this.options.filterValues : this.options.filterValues.split(',').map(value => value.trim());
-    if (!this.options.filterValues[0]) this.options.filterValues = [];
-    
+
+    if (this.options.filterValues[0] === '') {
+      this.options.filterValues = [];
+    }
+
     const databaseId = getDatabaseId(database);
 
     this.database_id = databaseId;
