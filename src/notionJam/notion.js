@@ -9,8 +9,8 @@ export class NotionModule {
   constructor({ secret, database }, options) {
 
     this.options = defaults({
-      filterProp: 'Status',
-      filterValues: 'Ready,Published',
+      filterProp: '',
+      filterValues: '',
       caseType: 'snake',
     }, options);
 
